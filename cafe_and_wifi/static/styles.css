@@ -1,0 +1,11 @@
+.icon_hover {
+    color: black;
+    opacity: 1
+}
+.icon_hover:hover {
+    opacity: 0.5
+}
+
+.address{
+    color: black
+}

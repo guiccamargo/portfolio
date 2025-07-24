@@ -1,0 +1,58 @@
+{{ bootstrap.load_css() }}
+{% from 'bootstrap5/form.html' import render_form %}
+<head>
+  <title>Update Cafe</title>
+</head>
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Update Café</h1>
+
+      <!-- This is where your WTForm will go -->
+      <form action="{{url_for('update_cafe', cafe_id=cafe.id) }}" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Café Name</label>
+          <input class="form-control" id="name" name="name" value="{{ cafe.name }}">
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Café Location</label>
+          <input class="form-control" id="location" name="location" value="{{ cafe.location }}">
+        </div>
+        <div class="mb-3">
+          <label for="map_url" class="form-label">Café Location on Google Maps (URL)</label>
+          <input class="form-control" id="map_url" name="map_url" value="{{ cafe.map_url }}">
+        </div>
+        <div class="mb-3">
+          <label for="img_url" class="form-label">Photo from the Café (URL)</label>
+          <input class="form-control" id="img_url" name="img_url" value="{{ cafe.img_url }}">
+        </div>
+        <div class="mb-3 form-check">
+          <label for="has_wifi" class="form-check-label">Has Wifi</label>
+          <input type="checkbox" class="form-check-input" id="has_wifi" name="has_wifi">
+        </div>
+        <div class="mb-3 form-check">
+          <label for="has_sockets" class="form-check-label">Café has power sockets</label>
+          <input type="checkbox" id="has_sockets" name="has_sockets" class="form-check-input">
+        </div>
+        <div class="mb-3 form-check">
+          <label for="can_take_calls" class="form-check-label">Can take calls</label>
+          <input type="checkbox" class="form-check-input" id="can_take_calls" name="can_take_calls">
+        </div>
+        <div class="mb-3 form-check">
+          <label for="has_toilet" class="form-check-label">Have toilets</label>
+          <input type="checkbox" class="form-check-input" id="has_toilet" name="has_toilet">
+        </div>
+        <div class="mb-3">
+          <label for="coffee_price" class="form-label">Coffee Price</label>
+          <input class="form-control" id="coffee_price" name="coffee_price" value="{{ cafe.coffee_price.strip('BRL ') }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
