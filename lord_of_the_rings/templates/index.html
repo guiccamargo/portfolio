@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lord of the Rings</title>
+    {% block styles %}
+    <!-- Load Bootstrap-Flask CSS here -->
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+</head>
+<body>
+<div class="py-5 text-center container">
+    <h1>Lord of the Ring Quotes</h1>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Movie</th>
+        <th scope="col">Academy Awards</th>
+        <th scope="col">Rotten Tomato Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for movie in movies: %}
+    <tr>
+        <td>{{ movie["name"] }}</td>
+        <td>{{ movie["academyAwardWins"] }}</td>
+        <td>{{ movie["rottenTomatoesScore"]|round(1) }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="px-4 py-5 my-5 text-center">
+    <a type="button" href="{{ url_for('random_quote') }}" class="btn btn-dark mb-5">Random Quote From the Movies</a>
+    {% if quote: %}
+    <h5 class="display-5 fw-bold text-body-emphasis">{{ quote }}</h5>
+    <div class="col-lg-6 mx-auto"><p class="lead mb-4">By: {{ character }}</p></div>
+    {% endif %}
+</div>
+</body>
+</html>
